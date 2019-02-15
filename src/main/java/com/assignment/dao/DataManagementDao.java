@@ -27,6 +27,8 @@ public class DataManagementDao {
     @PersistenceContext
     private EntityManager em;
 
+
+
     public DataManagementDao(){
 
 /*
@@ -174,6 +176,10 @@ public class DataManagementDao {
         Subject subject = getSubject(subName);
         return subject.getBooks();
 
+    }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
     }
 }
 

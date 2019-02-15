@@ -7,6 +7,7 @@ import com.assignment.domain.Book;
 import com.assignment.domain.Subject;
 import com.assignment.exception.NotFoundException;
 import com.assignment.service.DataManagementService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.transaction.Transactional;
-
+import org.springframework.context.annotation.Bean;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -29,13 +33,16 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @RunWith(SpringRunner.class)
 //@AutoConfigureTestDatabase(replace=NONE)
 @SpringBootTest
-@ContextConfiguration(classes= AppConfig.class,locations={"classpath*:testApplicationContext.xml"})
+@ContextConfiguration(classes= AppConfig.class,locations={"classpath:/testApplicationContext.xml"})
+
 //@DataJpaTest
 public class DataManagemenDaoTest {
 
 
     @Autowired
     DataManagementDao dataManagementDao;
+
+
 
     @Test
     @Rollback(false)

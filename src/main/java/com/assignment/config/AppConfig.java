@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
     @SpringBootApplication
 
     public class AppConfig extends SpringBootServletInitializer {
-        @Bean
+        @Bean(name="entityManager")
         public LocalEntityManagerFactoryBean geEntityManagerFactoryBean() {
             LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
             factoryBean.setPersistenceUnitName("LOCAL_PERSISTENCE");
